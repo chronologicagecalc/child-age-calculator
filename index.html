@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Child Age Calculator – Exact Age in Years, Months &amp; Days</title>
+<meta name="description" content="Free child age calculator: find a child’s exact age in years, months and days (Y;M;D), total months and weeks, corrected age for premature babies, age stage, next birthday and the age gap between siblings.">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Child Age Calculator – Exact Age in Years, Months &amp; Days">
+<meta property="og:description" content="Exact child age with step-by-step working, corrected age for preemies and a sibling age gap tool.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"WebApplication",
+      "name":"Child Age Calculator",
+      "applicationCategory":"UtilitiesApplication",
+      "operatingSystem":"Browser",
+      "inLanguage":"en",
+      "description":"Calculates a child’s exact age in years, months and days with step-by-step working, total months and weeks, corrected age for premature babies, age stage, next birthday and sibling age gap.",
+      "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}
+    },
+    {
+      "@type":"FAQPage",
+      "mainEntity":[
+        {"@type":"Question","name":"How do I calculate my child’s exact age?","acceptedAnswer":{"@type":"Answer","text":"Subtract the date of birth from today’s date in three columns – days, months and years. If the days are negative, borrow one month and add the number of days in the month before today’s month. If the months are negative, borrow one year and add 12 months."}},
+        {"@type":"Question","name":"What does an age like 4;7;12 mean?","acceptedAnswer":{"@type":"Answer","text":"It is a short way of writing 4 years, 7 months and 12 days. Teachers, therapists and psychologists often write a child’s age this way on reports and test forms."}},
+        {"@type":"Question","name":"Until what age should I use corrected age?","acceptedAnswer":{"@type":"Answer","text":"For babies born prematurely, corrected age is commonly used to judge growth and development until around two years old. Your child’s doctor or health visitor can tell you what applies to your baby."}},
+        {"@type":"Question","name":"Why do babies’ ages get counted in months?","acceptedAnswer":{"@type":"Answer","text":"Babies change so quickly that months – and in the first weeks, days and weeks – give a much clearer picture than years. Many parents switch to years after about two years."}},
+        {"@type":"Question","name":"How is a February 29 birthday handled?","acceptedAnswer":{"@type":"Answer","text":"The calculator uses real calendar months, so a child born on February 29 is counted correctly in leap and non-leap years. In non-leap years, families usually celebrate on February 28 or March 1."}},
+        {"@type":"Question","name":"Is my child’s date of birth stored?","acceptedAnswer":{"@type":"Answer","text":"No. All calculations run in your browser and nothing you enter is sent or saved."}}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="hd">
+  <div class="wrap hd-in">
+    <a href="#" class="logo" aria-label="Child Age Calculator home">
+      <span class="logo-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="7" r="3.2" fill="#fff"/><path d="M6 20c0-3.8 2.7-6.5 6-6.5s6 2.7 6 6.5" fill="#fff"/></svg></span>
+      <span>Little<b>Age</b></span>
+    </a>
+    <button class="burger" aria-label="Menu" onclick="document.querySelector('.nav').classList.toggle('open')"><span></span><span></span></button>
+    <nav class="nav">
+      <a href="#" class="cur">Calculator</a>
+      <a href="#stages">Age Stages</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="chip">For parents, teachers &amp; therapists</span>
+      <h1>Child Age Calculator</h1>
+      <p class="lead-h">Find your child’s exact age in years, months and days – plus total months for babies, corrected age for little ones born early and the countdown to the next birthday. Need the testing version with printable working? Use this <a href="https://chronologicagecalc.com/">age calculator of child</a> on ChronologicAgeCalc.</p>
+      <ul class="ticks">
+        <li>Real calendar months (28–31 days)</li>
+        <li>Leap years &amp; Feb 29 birthdays</li>
+        <li>Nothing stored – runs in your browser</li>
+      </ul>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 300 260">
+        <rect x="200" y="20" width="56" height="220" rx="10" fill="#fff" stroke="#e6e2f5" stroke-width="2"/>
+        <g stroke="#c9c2ee" stroke-width="2">
+          <line x1="200" y1="50" x2="226" y2="50"/><line x1="200" y1="80" x2="216" y2="80"/><line x1="200" y1="110" x2="226" y2="110"/><line x1="200" y1="140" x2="216" y2="140"/><line x1="200" y1="170" x2="226" y2="170"/><line x1="200" y1="200" x2="216" y2="200"/>
+        </g>
+        <text x="236" y="54" font-size="11" fill="#8b84b5" font-family="Inter">12y</text>
+        <text x="236" y="114" font-size="11" fill="#8b84b5" font-family="Inter">8y</text>
+        <text x="236" y="174" font-size="11" fill="#8b84b5" font-family="Inter">4y</text>
+        <g><circle cx="50" cy="196" r="14" fill="#ffd166"/><rect x="38" y="210" width="24" height="30" rx="10" fill="#ff7b6b"/></g>
+        <g><circle cx="105" cy="160" r="15" fill="#ffd166"/><rect x="92" y="176" width="26" height="64" rx="11" fill="#0f9d8f"/></g>
+        <g><circle cx="160" cy="112" r="16" fill="#ffd166"/><rect x="146" y="129" width="28" height="111" rx="12" fill="#7c6cf0"/></g>
+        <line x1="20" y1="240" x2="280" y2="240" stroke="#d9d4ef" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+  <!-- ===== CALCULATOR ===== -->
+  <section class="calc" id="calculator" aria-label="Child age calculator">
+    <div class="c-in">
+      <h2 class="c-h">Enter the dates</h2>
+      <label class="fld"><span>Child’s date of birth</span><input type="date" id="dob"></label>
+      <label class="fld"><span>Calculate age on</span><input type="date" id="on"></label>
+      <div class="quick" role="group" aria-label="Quick dates">
+        <button type="button" data-q="0" class="on">Today</button>
+        <button type="button" data-q="7">1 week ago</button>
+        <button type="button" data-q="m1">1 month ago</button>
+        <button type="button" data-q="y1">1 year ago</button>
+      </div>
+      <label class="sw"><input type="checkbox" id="pre"><b></b>Born early (premature)</label>
+      <div class="pre-box" id="pre-box" hidden>
+        <label class="fld"><span>Weeks born early</span>
+          <div class="pre-row"><input type="number" id="early" min="1" max="20" value="8"><em>weeks before 40 weeks</em></div>
+        </label>
+        <p class="hint">Example: born at 32 weeks = 8 weeks early.</p>
+      </div>
+      <label class="sw"><input type="checkbox" id="round"><b></b>Round 15+ days up to a month</label>
+      <p class="err" id="err" role="alert"></p>
+    </div>
+
+    <div class="c-out" aria-live="polite">
+      <p class="o-k">Exact age</p>
+      <div class="ymd" id="ymd"><div><b id="o-y">0</b><span>years</span></div><div><b id="o-m">0</b><span>months</span></div><div><b id="o-d">0</b><span>days</span></div></div>
+      <p class="o-note"><code id="o-code">0;0;0</code><span id="o-sent">Enter a date of birth to start.</span></p>
+      <div class="o-grid">
+        <div><span>Total months</span><b id="o-tm">–</b></div>
+        <div><span>Total weeks</span><b id="o-tw">–</b></div>
+        <div><span>Total days</span><b id="o-td">–</b></div>
+        <div><span>Age stage</span><b id="o-stage">–</b></div>
+      </div>
+      <div class="corr" id="corr" hidden>
+        <span>Corrected age</span>
+        <b id="o-corr">–</b>
+        <p id="o-corr-n"></p>
+      </div>
+      <div class="bday" id="bday">
+        <span class="cake" aria-hidden="true">🎂</span>
+        <p id="o-bday">–</p>
+      </div>
+      <details class="work"><summary>Show step-by-step working</summary><div id="work"></div></details>
+      <button type="button" class="copy" id="copy">Copy result</button>
+    </div>
+  </section>
+
+  <!-- ===== SIBLINGS ===== -->
+  <section class="sec sib">
+    <div>
+      <p class="kick">Family tool</p>
+      <h2>Age gap between siblings</h2>
+      <p>Enter two birthdays to see exactly how far apart your children are – handy for school planning, shared rooms or just settling who is “nearly” older.</p>
+    </div>
+    <div class="sib-card">
+      <div class="sib-row">
+        <label class="fld"><span>First child</span><input type="date" id="s1"></label>
+        <label class="fld"><span>Second child</span><input type="date" id="s2"></label>
+      </div>
+      <div class="sib-out" aria-live="polite"><b id="s-out">–</b><span id="s-sub">Enter both dates</span></div>
+    </div>
+  </section>
+
+  <!-- ===== HOW ===== -->
+  <section class="sec split">
+    <div>
+      <p class="kick">Do it by hand</p>
+      <h2>How to calculate a child’s age</h2>
+      <p>Write today’s date above the date of birth and subtract each column from right to left – days, then months, then years.</p>
+      <ol class="steps">
+        <li><b>Days:</b> if the birth day is bigger, borrow one month and add the number of days in the month before today’s month (28, 29, 30 or 31).</li>
+        <li><b>Months:</b> if the birth month is bigger, borrow one year and add 12 months.</li>
+        <li><b>Years:</b> subtract what is left. Write the answer as years;months;days.</li>
+      </ol>
+    </div>
+    <div class="sum">
+      <p class="sum-t">Example – birthday 20 June 2019, age on 5 November 2026</p>
+      <table>
+        <thead><tr><th></th><th>Year</th><th>Month</th><th>Day</th></tr></thead>
+        <tbody>
+          <tr><td>Age on</td><td>2026</td><td>11 → <i>10</i></td><td>5 → <i>36</i></td></tr>
+          <tr><td>Birth</td><td>2019</td><td>6</td><td>20</td></tr>
+          <tr class="res"><td>Age</td><td>7</td><td>4</td><td>16</td></tr>
+        </tbody>
+      </table>
+      <p class="sum-n">5 is smaller than 20, so we borrow one month from November and add the 31 days of October: 36 − 20 = 16.</p>
+    </div>
+  </section>
+
+  <!-- ===== STAGES ===== -->
+  <section class="sec" id="stages">
+    <div class="sec-head"><p class="kick">Growing up</p><h2>Child age stages at a glance</h2>
+    <p>The names below are common everyday labels. Every child develops at their own pace, so use them as a rough guide only.</p></div>
+    <div class="stages">
+      <article style="--c:#ff7b6b"><b>Newborn</b><span>0–4 weeks</span><p>The first month – ages are usually given in days and weeks.</p></article>
+      <article style="--c:#ffb347"><b>Infant</b><span>1–12 months</span><p>Ages are counted in months, from first smiles to first steps.</p></article>
+      <article style="--c:#ffd166"><b>Toddler</b><span>1–3 years</span><p>Many parents still say “18 months” or “30 months” at this stage.</p></article>
+      <article style="--c:#0f9d8f"><b>Preschooler</b><span>3–5 years</span><p>Play, language and early learning before formal school.</p></article>
+      <article style="--c:#3a86ff"><b>School-age</b><span>5–11 years</span><p>Primary or elementary school years.</p></article>
+      <article style="--c:#7c6cf0"><b>Preteen</b><span>11–13 years</span><p>The move towards secondary or middle school.</p></article>
+      <article style="--c:#c05299"><b>Teenager</b><span>13–17 years</span><p>Secondary or high school until adulthood at 18.</p></article>
+    </div>
+  </section>
+
+  <!-- ===== MONTHS TABLE ===== -->
+  <section class="sec split rev">
+    <div class="tbl">
+      <table>
+        <thead><tr><th>In months</th><th>In years;months</th><th>How people say it</th></tr></thead>
+        <tbody>
+          <tr><td>6</td><td>0;6</td><td>six months</td></tr>
+          <tr><td>12</td><td>1;0</td><td>one year</td></tr>
+          <tr><td>18</td><td>1;6</td><td>eighteen months</td></tr>
+          <tr><td>24</td><td>2;0</td><td>two years</td></tr>
+          <tr><td>30</td><td>2;6</td><td>two and a half</td></tr>
+          <tr><td>42</td><td>3;6</td><td>three and a half</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <p class="kick">Babies &amp; toddlers</p>
+      <h2>Why little ones are counted in months</h2>
+      <p>A baby at 7 months and a baby at 11 months are both “under one”, yet they are at very different stages. That is why health checks, clothing sizes and baby books use months – and why the calculator always shows the <b>total months</b> too.</p>
+      <p>Most families switch to years at around two, though “30 months” is still common on medical forms.</p>
+    </div>
+  </section>
+
+  <!-- ===== CORRECTED ===== -->
+  <section class="sec">
+    <div class="pre-info">
+      <div>
+        <p class="kick light">Born early?</p>
+        <h2>Corrected age for premature babies</h2>
+        <p>A baby born before 37 weeks has two ages: the <b>chronological age</b> from their birthday, and a <b>corrected (adjusted) age</b> from their original due date. Health professionals usually look at corrected age when checking growth and development for the first couple of years.</p>
+      </div>
+      <div class="pre-ex">
+        <div><span>Born at</span><b>32 weeks</b></div>
+        <div><span>Weeks early</span><b>40 − 32 = 8</b></div>
+        <div><span>Age today</span><b>6 months</b></div>
+        <div class="hl"><span>Corrected age</span><b>≈ 4 months</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="sec">
+    <div class="sec-head"><p class="kick">FAQ</p><h2>Child age questions</h2></div>
+    <div class="faq">
+      <details open><summary>How do I calculate my child’s exact age?</summary><p>Subtract the date of birth from today’s date in three columns – days, months and years. If the days are negative, borrow one month and add the number of days in the month before today’s month. If the months are negative, borrow one year and add 12 months.</p></details>
+      <details><summary>What does an age like 4;7;12 mean?</summary><p>It is a short way of writing 4 years, 7 months and 12 days. Teachers, therapists and psychologists often write a child’s age this way on reports and test forms.</p></details>
+      <details><summary>Until what age should I use corrected age?</summary><p>For babies born prematurely, corrected age is commonly used to judge growth and development until around two years old. Your child’s doctor or health visitor can tell you what applies to your baby.</p></details>
+      <details><summary>Why do babies’ ages get counted in months?</summary><p>Babies change so quickly that months – and in the first weeks, days and weeks – give a much clearer picture than years. Many parents switch to years after about two years.</p></details>
+      <details><summary>How is a February 29 birthday handled?</summary><p>The calculator uses real calendar months, so a child born on February 29 is counted correctly in leap and non-leap years. In non-leap years, families usually celebrate on February 28 or March 1.</p></details>
+      <details><summary>Is my child’s date of birth stored?</summary><p>No. All calculations run in your browser and nothing you enter is sent or saved.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer class="ft" id="contact">
+  <div class="wrap ft-in">
+    <div>
+      <span class="logo light"><span class="logo-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="7" r="3.2" fill="#fff"/><path d="M6 20c0-3.8 2.7-6.5 6-6.5s6 2.7 6 6.5" fill="#fff"/></svg></span><span>Little<b>Age</b></span></span>
+      <p>A free, private child age calculator for families and professionals.</p>
+    </div>
+    <nav>
+      <a href="#calculator">Calculator</a>
+      <a href="#stages">Age Stages</a>
+      <a href="#">Contact</a>
+      <a href="#">Privacy</a>
+    </nav>
+  </div>
+  <p class="wrap ft-copy">© <span id="yr"></span> LittleAge · For general information. Ask a health professional about your child’s development.</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id);};
+  var MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  function pad(n){return String(n).padStart(2,'0');}
+  function iso(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());}
+  function parse(v){ if(!v) return null; var p=v.split('-'); return new Date(+p[0],+p[1]-1,+p[2]); }
+  function dim(y,m){ return new Date(y,m+1,0).getDate(); }
+  function fmtDate(d){ return d.getDate()+' '+MONTHS[d.getMonth()]+' '+d.getFullYear(); }
+  function plural(n,w){ return n+' '+w+(n===1?'':'s'); }
+  function toast(t){var e=$('toast');e.textContent=t;e.classList.add('show');clearTimeout(e._t);e._t=setTimeout(function(){e.classList.remove('show');},1800);}
+
+  /* Y;M;D with real days of the month before the end date */
+  function diff(a,b){
+    var y=b.getFullYear()-a.getFullYear(), m=b.getMonth()-a.getMonth(), d=b.getDate()-a.getDate(), steps=[];
+    var borrowDays=0, borrowMonths=false, prevM=b.getMonth()-1, prevY=b.getFullYear(); if(prevM<0){prevM=11;prevY--;}
+    if(d<0){ borrowDays=dim(prevY,prevM); d+=borrowDays; m-=1; }
+    if(m<0){ m+=12; y-=1; borrowMonths=true; }
+    return {y:y,m:m,d:d,borrowDays:borrowDays,borrowMonth:MONTHS[prevM],borrowMonths:borrowMonths};
+  }
+  function stage(totalDays,months){
+    if(totalDays<28) return 'Newborn';
+    if(months<12) return 'Infant';
+    if(months<36) return 'Toddler';
+    if(months<60) return 'Preschooler';
+    if(months<132) return 'School-age child';
+    if(months<156) return 'Preteen';
+    if(months<216) return 'Teenager';
+    return 'Adult';
+  }
+
+  var copyTxt='';
+  function run(){
+    var a=parse($('dob').value), b=parse($('on').value);
+    if(!a){ $('err').textContent=''; return; }
+    if(!b){ b=new Date(); b=new Date(b.getFullYear(),b.getMonth(),b.getDate()); }
+    if(a>b){ $('err').textContent='The date of birth is after the “age on” date – please check the dates.'; return; }
+    $('err').textContent='';
+    var r=diff(a,b), y=r.y, m=r.m, d=r.d;
+    var rounded=false;
+    if($('round').checked && d>=15){ m+=1; d=0; rounded=true; if(m===12){m=0;y+=1;} }
+    else if($('round').checked){ d=0; }
+    $('o-y').textContent=y; $('o-m').textContent=m; $('o-d').textContent=d;
+    $('o-code').textContent=y+';'+m+';'+d;
+    $('o-sent').textContent=plural(y,'year')+', '+plural(m,'month')+' and '+plural(d,'day')+($('round').checked?' (rounded)':'');
+    var td=Math.round((b-a)/864e5), tm=r.y*12+r.m;
+    $('o-tm').textContent=tm+(r.d?' + '+r.d+'d':'');
+    $('o-tw').textContent=Math.floor(td/7)+(td%7?' + '+td%7+'d':'');
+    $('o-td').textContent=td.toLocaleString('en-US');
+    $('o-stage').textContent=stage(td,tm);
+
+    /* corrected age */
+    var pre=$('pre').checked; $('pre-box').hidden=!pre; $('corr').hidden=!pre;
+    if(pre){
+      var w=Math.max(1,Math.min(20,parseInt($('early').value,10)||0));
+      var due=new Date(a); due.setDate(due.getDate()+w*7);
+      if(due>b){ var left=Math.round((due-b)/864e5); $('o-corr').textContent='Before due date'; $('o-corr-n').textContent='The original due date ('+fmtDate(due)+') is '+plural(left,'day')+' away.'; }
+      else { var c=diff(due,b); $('o-corr').textContent=c.y+';'+c.m+';'+c.d; $('o-corr-n').textContent=plural(c.y*12+c.m,'month')+' and '+plural(c.d,'day')+', counted from the due date '+fmtDate(due)+'.'; }
+    }
+
+    /* next birthday */
+    var nb=new Date(b.getFullYear(),a.getMonth(),a.getDate());
+    if(a.getMonth()===1&&a.getDate()===29&&dim(nb.getFullYear(),1)===28) nb=new Date(nb.getFullYear(),1,28);
+    if(nb<=b){ nb=new Date(b.getFullYear()+1,a.getMonth(),a.getDate()); if(a.getMonth()===1&&a.getDate()===29&&dim(nb.getFullYear(),1)===28) nb=new Date(nb.getFullYear(),1,28); }
+    var isBday=b.getMonth()===a.getMonth()&&b.getDate()===a.getDate();
+    var until=Math.round((nb-b)/864e5), turning=nb.getFullYear()-a.getFullYear();
+    $('o-bday').innerHTML=isBday?'<b>Happy birthday!</b> Today is birthday number '+y+'.':'<b>'+plural(until,'day')+'</b> until turning '+turning+' on '+fmtDate(nb)+'.';
+
+    /* working */
+    var bY=b.getFullYear(), bM=b.getMonth()+1, bD=b.getDate();
+    $('work').innerHTML='<table><thead><tr><th></th><th>Year</th><th>Month</th><th>Day</th></tr></thead><tbody>'
+      +'<tr><td>Age on</td><td>'+bY+(r.borrowMonths?' → <i>'+(bY-1)+'</i>':'')+'</td><td>'+bM+(r.borrowDays?' → <i>'+(bM-1)+'</i>':'')+(r.borrowMonths?' → <i>'+((r.borrowDays?bM-1:bM)+12)+'</i>':'')+'</td><td>'+bD+(r.borrowDays?' → <i>'+(bD+r.borrowDays)+'</i>':'')+'</td></tr>'
+      +'<tr><td>Birth</td><td>'+a.getFullYear()+'</td><td>'+(a.getMonth()+1)+'</td><td>'+a.getDate()+'</td></tr>'
+      +'<tr class="res"><td>Age</td><td>'+r.y+'</td><td>'+r.m+'</td><td>'+r.d+'</td></tr></tbody></table>'
+      +'<ul>'+(r.borrowDays?'<li>The birth day is larger, so we borrow 1 month and add the '+r.borrowDays+' days of '+r.borrowMonth+'.</li>':'<li>No borrowing needed for the days.</li>')
+      +(r.borrowMonths?'<li>The months are negative, so we borrow 1 year and add 12 months.</li>':'<li>No borrowing needed for the months.</li>')
+      +(rounded?'<li>Rounding is on: 15 or more days count as one more month.</li>':'')+'</ul>';
+
+    copyTxt='Age on '+fmtDate(b)+': '+y+';'+m+';'+d+' ('+plural(y,'year')+', '+plural(m,'month')+', '+plural(d,'day')+')'+(pre&&$('o-corr').textContent.indexOf(';')>-1?' – corrected age '+$('o-corr').textContent:'');
+  }
+
+  /* quick buttons */
+  document.querySelectorAll('.quick button').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var q=btn.dataset.q, n=new Date(); n=new Date(n.getFullYear(),n.getMonth(),n.getDate());
+      if(q==='7') n.setDate(n.getDate()-7); else if(q==='m1') n.setMonth(n.getMonth()-1); else if(q==='y1') n.setFullYear(n.getFullYear()-1);
+      $('on').value=iso(n);
+      document.querySelectorAll('.quick button').forEach(function(x){x.classList.toggle('on',x===btn);});
+      run();
+    });
+  });
+  ['dob','on','early'].forEach(function(id){ $(id).addEventListener('input',run); });
+  ['pre','round'].forEach(function(id){ $(id).addEventListener('change',run); });
+  $('on').addEventListener('input',function(){ document.querySelectorAll('.quick button').forEach(function(x){x.classList.remove('on');}); });
+  $('copy').addEventListener('click',function(){
+    if(!copyTxt){ toast('Enter a date of birth first'); return; }
+    if(navigator.clipboard&&window.isSecureContext){ navigator.clipboard.writeText(copyTxt).then(function(){toast('Result copied');}); return; }
+    var t=document.createElement('textarea'); t.value=copyTxt; document.body.appendChild(t); t.select(); try{document.execCommand('copy');toast('Result copied');}catch(e){} t.remove();
+  });
+
+  /* siblings */
+  function sib(){
+    var a=parse($('s1').value), b=parse($('s2').value);
+    if(!a||!b){ $('s-out').textContent='–'; $('s-sub').textContent='Enter both dates'; return; }
+    if(+a===+b){ $('s-out').textContent='Same birthday'; $('s-sub').textContent='Twins – or a very lucky coincidence!'; return; }
+    var older=a<b?a:b, younger=a<b?b:a, r=diff(older,younger), days=Math.round((younger-older)/864e5);
+    $('s-out').textContent=r.y+';'+r.m+';'+r.d;
+    $('s-sub').textContent=(a<b?'The first':'The second')+' child is '+plural(r.y,'year')+', '+plural(r.m,'month')+' and '+plural(r.d,'day')+' older ('+days.toLocaleString('en-US')+' days).';
+  }
+  ['s1','s2'].forEach(function(id){ $(id).addEventListener('input',sib); });
+
+  /* defaults */
+  var t=new Date(); $('on').value=iso(t); $('on').max=iso(new Date(t.getFullYear()+50,0,1));
+  var ex=new Date(t.getFullYear()-7,t.getMonth()-4,t.getDate()-16); $('dob').value=iso(ex);
+  document.querySelectorAll('.nav a').forEach(function(a){a.addEventListener('click',function(){document.querySelector('.nav').classList.remove('open');});});
+  $('yr').textContent=t.getFullYear();
+  run(); sib();
+})();
+</script>
+</body>
+</html>
